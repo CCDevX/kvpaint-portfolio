@@ -1,0 +1,72 @@
+@use "./common/scss/reset" as *;
+@use "./common/scss/base" as *;
+@use "./common/scss/media-queries" as *;
+@use "./common/scss/theme/theme-dark" as *;
+@use "./common/scss/theme/theme-light" as *;
+@use "./common/scss/theme/theme-common" as *;
+
+.container {
+  height: 100vh;
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-color: var(--bg-primary);
+
+    .logo {
+      font-size: 3rem;
+      font-family: var(--font-family);
+      color: var(--text-primary);
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li a {
+          font-size: 2rem;
+          display: flex;
+          align-items: center;
+          padding: 1.2rem 2rem;
+          color: var(--text-secondary);
+          text-decoration: none;
+          transition: all var(--transition-speed);
+
+          &:hover,
+          &.active {
+            background: var(--bg-elevated);
+            color: var(--accent-color);
+            border-bottom: 0.4rem solid var(--accent-color);
+          }
+        }
+      }
+
+      #theme-toggle {
+        background: none;
+        border: none;
+        font-size: 1.6rem;
+        cursor: pointer;
+        color: var(--text-secondary);
+        transition: color var(--transition-speed);
+
+        &:hover {
+          color: var(--accent-color);
+        }
+
+        i {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

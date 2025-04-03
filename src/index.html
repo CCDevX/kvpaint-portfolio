@@ -16,11 +16,20 @@
         <div class="logo">KV Paint</div>
         <nav class="top-nav">
           <ul>
-            <li href="#" class="active" data-page="home">Home</li>
-            <li href="#" data-page="gallery">Galerie</li>
-            <li href="#" data-page="about">À propos</li>
-            <li href="#" data-page="contact">contact</li>
+            <li><a href="#" class="active" data-page="home">Home</a></li>
+            <li><a href="#" data-page="gallery">Galerie</a></li>
+            <li><a href="#" data-page="about">À propos</a></li>
+            <li><a href="#" data-page="contact">Contact</a></li>
           </ul>
+          <div>
+            <button
+              id="theme-toggle"
+              title="Toggle theme"
+              aria-label="Toggle theme"
+            >
+              <i id="theme-icon" class="fa-solid fa-moon"></i>
+            </button>
+          </div>
         </nav>
       </header>
       <!-- Dynamic content area -->
@@ -36,5 +45,6 @@
         </p>
       </footer>
     </div>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
