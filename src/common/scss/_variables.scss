@@ -1,0 +1,31 @@
+// ==== Base colors inspired by the painting ====
+$bg-primary: #0f1114; // Deep dark blue-black (background)
+$bg-secondary: #182126; // Dark cyan-tinted background (sections)
+$bg-elevated: #253137; // Slightly lighter elevation for cards, overlays
+
+$text-primary: #eff4f6; // Soft pearl white (main text)
+$text-secondary: #9ab4c2; // Light turquoise-grey (subtle secondary text)
+
+$accent-color: #3c8ca4; // Arctic blue (buttons, highlights)
+$accent-hover: #58a9c0; // Hover lighter version
+
+$border-color: #2f3c45; // Muted blue-grey border
+
+$error: #d95d5d; // Warm red (optional)
+$error-hover: #e97a7a;
+
+$succes: #4ea88c; // Soft teal-green
+$succes-hover: #64c0a2;
+
+// ==== Extra: metallic tones ====
+$gold-metallic: #d4a743; // Gold flakes
+$silver-metallic: #b6b6b6; // Silver foil
+
+// ==== Layout dimensions ====
+$sidebar-width: 25rem;
+$header-height: 6rem;
+$transition-speed: 0.3s;
+
+// ==== Shadow & fonts ====
+$box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+$font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
