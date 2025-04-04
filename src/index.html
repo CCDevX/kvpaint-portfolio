@@ -7,31 +7,33 @@
       src="https://kit.fontawesome.com/763e789067.js"
       crossorigin="anonymous"
     ></script>
-    <title>KV Paint - Artist Portfolio</title>
+    <title>KV.Paint - Artist Portfolio</title>
   </head>
   <body>
     <div class="container">
       <!-- Header with top menu -->
       <header class="site-header">
-        <div class="logo">KV Paint</div>
+        <div class="logo">KV.Paint</div>
         <nav class="top-nav">
-          <ul>
+          <ul class="menu-list">
             <li><a href="#" class="active" data-page="home">Home</a></li>
             <li><a href="#" data-page="galery">Galerie</a></li>
             <li><a href="#" data-page="about">À propos</a></li>
             <li><a href="#" data-page="contact">Contact</a></li>
           </ul>
-          <div class="toggle-container">
-            <button
-              id="theme-toggle"
-              title="Toggle theme"
-              aria-label="Toggle theme"
-            >
+          <div class="button-container">
+            <button class="theme-toggle">
               <i id="theme-icon" class="fa-solid fa-moon"></i>
+            </button>
+            <button class="menu-icon" id="menu-icon">
+              <i class="fas fa-bars"></i>
             </button>
           </div>
         </nav>
       </header>
+      <nav class="mobile-menu">
+        <!-- Dynamic Mobile Menu Injection -->
+      </nav>
       <!-- Dynamic content area -->
       <main id="page-content" class="page-content">
         <!-- Content will be loaded here dynamically via JS -->
@@ -46,5 +48,9 @@
       </footer>
     </div>
     <script type="module" src="./index.js"></script>
+    <script
+      type="module"
+      src="./common/javascript/helper/theme-helper.js"
+    ></script>
   </body>
 </html>

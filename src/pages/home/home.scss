@@ -1,0 +1,47 @@
+@use "../../common/scss/buttons" as *;
+@use "../../common/scss/keyframes" as *;
+
+.home {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--bg-primary);
+
+  .hero {
+    .hero-image-container {
+      .hero-image {
+        width: 50rem;
+        height: 50rem;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 2rem;
+        &:hover {
+          animation: spin 10s ease-out infinite alternate;
+        }
+      }
+    }
+
+    .hero-content {
+      animation: fadeInUp 2s ease-out forwards;
+      .hero-title {
+        font-size: 4rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.6rem;
+      }
+
+      .hero-subtitle {
+        font-size: 2.5rem;
+        color: var(--text-secondary);
+      }
+    }
+  }
+  .intro {
+    animation: fadeInUp 2s ease-out forwards;
+    p {
+      font-size: 1.6rem;
+    }
+  }
+}

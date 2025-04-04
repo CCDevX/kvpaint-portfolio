@@ -3,8 +3,8 @@ const ICON_MOON = "fa-moon";
 const ICON_SUN = "fa-sun";
 
 const html = document.documentElement;
-const themeToggle = document.getElementById("theme-toggle");
-const themeIcon = document.getElementById("theme-icon");
+const themeToggle = document.querySelector(".theme-toggle");
+const themeIcon = document.querySelector("#theme-icon");
 
 function applyTheme(theme) {
   // Apply the data-theme attribute on <html>
@@ -24,9 +24,14 @@ function applyTheme(theme) {
 }
 
 function toggleTheme() {
-  const currentTheme = html.getAttribute("data-theme");
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-  applyTheme(newTheme);
+  try {
+    console.log("enter toggle fct");
+    const currentTheme = html.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    applyTheme(newTheme);
+  } catch (e) {
+    console.log("toggle error : ", e);
+  }
 }
 
 function initTheme() {

@@ -18,8 +18,9 @@
 
     .logo {
       font-size: 3rem;
+      font-weight: bold;
       font-family: var(--font-family);
-      color: var(--text-primary);
+      color: var(--text-secondary);
     }
 
     .top-nav {
@@ -27,7 +28,7 @@
       align-items: center;
       gap: 2rem;
 
-      ul {
+      .menu-list {
         display: flex;
         align-items: center;
         gap: 1.5rem;
@@ -50,17 +51,26 @@
             color: var(--accent-color);
             border-bottom: 0.4rem solid var(--accent-color);
           }
+          @include sm {
+            display: none;
+          }
         }
       }
-      .toggle-container {
+      .button-container {
         border: 0;
-        #theme-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .theme-toggle {
+          padding: 0.5rem;
+          margin-left: 0.5rem;
           display: flex;
           align-items: center;
           background: none;
           border: 0;
           outline: none;
-          font-size: 1.6rem;
+          font-size: 3rem;
           cursor: pointer;
           color: var(--text-secondary);
           transition: color var(--transition-speed);
@@ -79,7 +89,46 @@
             outline: none;
           }
         }
+        .menu-icon {
+          padding: 0.5rem;
+          margin-left: 0.5rem;
+          display: none;
+          font-size: 4rem;
+          align-items: center;
+          background: none;
+          border: 0;
+          outline: none;
+          font-size: 2rem;
+          cursor: pointer;
+          color: var(--text-secondary);
+          transition: color var(--transition-speed);
+
+          &:hover {
+            color: var(--accent-color);
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          i {
+            pointer-events: none;
+            border: none;
+            outline: none;
+          }
+          @include sm {
+            display: block;
+          }
+        }
       }
+    }
+  }
+  .mobile-menu {
+    display: none;
+    &.active {
+      display: flex;
+      flex-direction: column;
+      background-color: red;
     }
   }
   .page-content {

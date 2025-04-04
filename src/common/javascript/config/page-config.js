@@ -1,7 +1,7 @@
 const pageConfig = {
   home: {
     title: "Home",
-    scripts: [],
+    scripts: ["pages/home/home.js"],
   },
   projects: {
     title: "Galerie",
