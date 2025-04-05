@@ -1,18 +1,26 @@
 [data-theme="dark"] {
-  // --bg-primary: #0f1114;
-  // --bg-secondary: #182126;
-  // --bg-elevated: #253137;
-  --bg-primary: #16191d; // Avant : #0f1114
-  --bg-secondary: #212a2f; // Avant : #182126
-  --bg-elevated: #2e3b42; // Avant : #253137
+  --bg-primary: #3f464c; // gris doux avec une pointe de bleu
+  --bg-secondary: #50585f; // légèrement plus clair pour les blocs
+  --bg-elevated: #616b74; // pour cartes ou modals
+  --text-primary: #f0f2f4; // blanc cassé
+  --text-secondary: #737d87; // gris clair lisible
+  --accent-color: #4db0c8; // bleu pastel (cohérent avec le halo)
+  --accent-hover: #69c3dc;
 
-  --text-primary: #eff4f6;
-  --text-secondary: #9ab4c2;
+  --border-color: #5e6870; // discret mais visible
 
-  --accent-color: #3c8ca4;
-  --accent-hover: #58a9c0;
+  --home-page-background: radial-gradient(
+    circle at center,
+    #d8eef2 0%,
+    #9cc4d8 40%,
+    var(--bg-primary) 100%
+  );
 
-  --border-color: #2f3c45;
-
-  --box-shadow-color: rgba(255, 255, 255, 0.4);
+  --contact-page-background: linear-gradient(
+    135deg,
+    #9b5c6b 0%,
+    /* rosé prune doux */ #b97b5a 35%,
+    /* orange pêche cuivrée claire */ #688aa0 70%,
+    /* bleu-gris lumineux mais sourd */ var(--bg-primary) 100%
+  );
 }
