@@ -1,7 +1,10 @@
 [data-theme="dark"] {
-  --bg-primary: #0f1114;
-  --bg-secondary: #182126;
-  --bg-elevated: #253137;
+  // --bg-primary: #0f1114;
+  // --bg-secondary: #182126;
+  // --bg-elevated: #253137;
+  --bg-primary: #16191d; // Avant : #0f1114
+  --bg-secondary: #212a2f; // Avant : #182126
+  --bg-elevated: #2e3b42; // Avant : #253137
 
   --text-primary: #eff4f6;
   --text-secondary: #9ab4c2;
@@ -10,4 +13,6 @@
   --accent-hover: #58a9c0;
 
   --border-color: #2f3c45;
+
+  --box-shadow-color: rgba(255, 255, 255, 0.4);
 }

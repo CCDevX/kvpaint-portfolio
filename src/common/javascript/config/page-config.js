@@ -3,17 +3,17 @@ const pageConfig = {
     title: "Home",
     scripts: ["pages/home/home.js"],
   },
-  projects: {
+  galerie: {
     title: "Galerie",
     scripts: [],
   },
-  settings: {
+  about: {
     title: "A propos",
     scripts: [],
   },
-  help: {
+  contact: {
     title: "Contact",
-    scripts: [],
+    scripts: ["pages/contact/contact.js"],
   },
 };
 

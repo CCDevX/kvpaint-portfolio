@@ -21,6 +21,9 @@
       font-weight: bold;
       font-family: var(--font-family);
       color: var(--text-secondary);
+      @include sm {
+        font-size: 2rem;
+      }
     }
 
     .top-nav {
@@ -136,11 +139,11 @@
         align-items: center;
         gap: 1rem;
         list-style: none;
-        padding: 1rem 0 2rem 0;
+        padding: 1rem 0 1rem 0;
         margin: 0rem;
         li {
           a {
-            font-size: 2rem;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             padding: 0.5rem;
@@ -152,7 +155,7 @@
             &.active {
               font-weight: 700;
               color: var(--accent-color);
-              font-size: 2.5rem;
+              font-size: 2rem;
             }
           }
         }

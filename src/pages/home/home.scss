@@ -18,6 +18,7 @@
         border-radius: 50%;
         object-fit: cover;
         margin-bottom: 2rem;
+        box-shadow: 0 0 2rem var(--box-shadow-color);
         &:hover {
           animation: spin 10s ease-out infinite alternate;
         }
