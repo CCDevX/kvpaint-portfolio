@@ -3,7 +3,7 @@ const pageConfig = {
     title: "Home",
     scripts: ["pages/home/home.js"],
   },
-  galerie: {
+  gallery: {
     title: "Galerie",
     scripts: ["pages/gallery/gallery.js"],
   },
