@@ -1,0 +1,73 @@
+@use "../../common/scss/media-queries" as *;
+
+.about-section {
+  padding: 6rem 2rem;
+  background: var(--about-page-background); // À définir dans tes variables
+  width: 100%;
+  height: 100%;
+  .about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    // gap: 4rem;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding-left: 4rem;
+
+    @include sm {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .about-image {
+    flex: 1;
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 1rem;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+      object-fit: cover;
+    }
+  }
+
+  .about-text {
+    flex: 2;
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    line-height: 1.8;
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+    }
+
+    .signature {
+      margin-top: 2rem;
+      font-style: italic;
+    }
+  }
+}
+
+.image-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: filter 0.5s ease, transform 0.5s ease;
+    filter: grayscale(100%);
+  }
+
+  &:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+  }
+}

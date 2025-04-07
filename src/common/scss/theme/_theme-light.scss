@@ -20,6 +20,14 @@
     var(--bg-primary) 100%
   );
 
+  --about-page-background: radial-gradient(
+    circle at center,
+    #f0f4f6 0%,
+    #f6f996 40%,
+    #d3cce9 70%,
+    var(--bg-primary) 100%
+  );
+
   --contact-page-background: linear-gradient(
     135deg,
     #ffe1e7 0%,

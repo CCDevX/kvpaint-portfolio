@@ -9,7 +9,7 @@ const pageConfig = {
   },
   about: {
     title: "A propos",
-    scripts: [],
+    scripts: ["pages/about/about.js"],
   },
   contact: {
     title: "Contact",

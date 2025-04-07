@@ -16,6 +16,14 @@
     var(--bg-primary) 100%
   );
 
+  --about-page-background: radial-gradient(
+    circle at center,
+    rgba(229, 231, 88, 0.1) 0%,
+    rgba(107, 96, 157, 0.3) 40%,
+    rgba(62, 57, 104, 0.5) 70%,
+    var(--bg-primary) 100%
+  );
+
   --contact-page-background: linear-gradient(
     135deg,
     #9b5c6b 0%,
