@@ -5,7 +5,7 @@ const pageConfig = {
   },
   galerie: {
     title: "Galerie",
-    scripts: [],
+    scripts: ["pages/gallery/gallery.js"],
   },
   about: {
     title: "A propos",

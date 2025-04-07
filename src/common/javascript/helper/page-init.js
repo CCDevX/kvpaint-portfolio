@@ -2,7 +2,7 @@ const initPage = (pageName, params = {}) => {
   switch (pageName) {
     case "home":
       break;
-    case "galery":
+    case "gallery":
       break;
     case "about":
       break;

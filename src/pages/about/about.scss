@@ -20,6 +20,16 @@
       flex-direction: column;
       text-align: center;
     }
+    .presentation-text {
+      display: flex;
+      flex-direction: column;
+      h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.6rem;
+      }
+    }
   }
 
   .about-image {
@@ -32,24 +42,6 @@
       object-fit: cover;
     }
   }
-
-  .about-text {
-    flex: 2;
-    color: var(--text-primary);
-    font-size: 1.6rem;
-    line-height: 1.8;
-
-    h2 {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      color: var(--text-secondary);
-    }
-
-    .signature {
-      margin-top: 2rem;
-      font-style: italic;
-    }
-  }
 }
 
 .image-wrapper {
@@ -57,6 +49,7 @@
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  margin: 2rem;
 
   img {
     display: block;
