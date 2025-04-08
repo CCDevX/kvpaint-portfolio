@@ -2,7 +2,7 @@
 @use "../../common/scss/keyframes" as *;
 
 .home {
-  min-height: 100%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,11 +13,11 @@
   .hero {
     .hero-image-container {
       .hero-image {
-        width: 50rem;
-        height: 50rem;
+        width: 45rem;
+        height: 45rem;
         border-radius: 50%;
         object-fit: cover;
-        margin-bottom: 2rem;
+        margin: 2rem;
         box-shadow: 0 0 2rem var(--box-shadow-color);
         &:hover {
           animation: spin 10s ease-out infinite alternate;

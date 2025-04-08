@@ -2,12 +2,12 @@
   padding: 6rem 2rem;
   background: var(--gallery-page-background);
   width: 100%;
-  height: 100%;
+  max-height: 100%;
 
   .gallery-header {
     display: flex;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
     .gallery-filters {
       backdrop-filter: blur(8px); // verre dépoli
@@ -50,16 +50,16 @@
   .gallery-content {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     align-items: center;
 
     .gallery-grid {
       flex: 1;
-      max-width: 700px;
+      max-width: 70rem;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+      gap: 3rem;
+      margin-top: 1rem;
       justify-items: center;
       .gallery-item {
         width: 150px;
@@ -69,7 +69,7 @@
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
         cursor: pointer;
         transition: transform 0.3s ease;
-
+        margin: 0.5rem;
         &:hover {
           transform: scale(1.05);
         }
@@ -93,14 +93,14 @@
     .gallery-preview {
       display: flex;
       justify-content: center;
-      margin-top: 3rem;
+      margin-top: 1rem;
       flex-shrink: 0;
       &.hidden {
         display: none;
       }
       img {
         border: 3px solid var(--border-color);
-        max-width: 300px;
+        max-width: 30rem;
         width: 100%;
         height: auto;
         border-radius: 1rem;
@@ -126,6 +126,71 @@
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
       &.inactive {
         display: none;
+      }
+    }
+  }
+}
+
+.gallery-footer {
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+
+    button {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-elevated);
+      color: var(--text-primary);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: var(--accent-hover);
+        color: #fff;
+      }
+    }
+
+    #page-indicator {
+      font-weight: 500;
+    }
+  }
+
+  .gallery-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+
+    label {
+      font-weight: 500;
+    }
+
+    select {
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--bg-elevated);
+        color: #fff;
       }
     }
   }

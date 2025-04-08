@@ -11,14 +11,24 @@
   <div class="gallery-content">
     <div class="gallery-grid">
       <!-- Chaque œuvre aura des classes pour filtrage -->
-      <div class="gallery-item round">
-        <img src="../../assets/img/gallery/2.jpg" alt="Œuvre ronde 1" />
-      </div>
-      <div class="gallery-item canvas">
-        <img src="../../assets/img/gallery/1.jpg" alt="Peinture sur toile 1" />
-      </div>
-      <!-- ... -->
+      <!-- Les images seront injectées par JS -->
     </div>
+    <div class="gallery-footer">
+      <div class="pagination" id="pagination">
+        <button id="prev-page">←</button>
+        <span id="page-indicator">Page 1 sur 10</span>
+        <button id="next-page">→</button>
+      </div>
+      <div class="gallery-controls">
+        <label for="itemsPerPage">Items :</label>
+        <select id="itemsPerPage">
+          <option value="4" selected>4</option>
+          <option value="8">8</option>
+          <option value="12">12</option>
+        </select>
+      </div>
+    </div>
+
     <div class="gallery-divider"></div>
     <div class="gallery-preview hidden" id="gallery-preview">
       <img src="" alt="Œuvre sélectionnée" id="preview-image" />

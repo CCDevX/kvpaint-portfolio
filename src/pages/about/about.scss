@@ -1,7 +1,7 @@
 @use "../../common/scss/media-queries" as *;
 
 .about-section {
-  padding: 6rem 2rem;
+  padding: 4rem 1rem;
   background: var(--about-page-background); // À définir dans tes variables
   width: 100%;
   height: 100%;
@@ -34,9 +34,14 @@
 
   .about-image {
     flex: 1;
+    display: flex;
+    justify-content: center;
+
     img {
       width: 100%;
-      max-width: 400px;
+      max-width: 200px;
+      max-height: 300px; // Limite la hauteur maximale
+      height: auto;
       border-radius: 1rem;
       box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
       object-fit: cover;
