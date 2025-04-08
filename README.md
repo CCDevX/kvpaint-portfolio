@@ -36,7 +36,7 @@ Coming soon: [https://kvpaint.com](https://kvpaint.com)
 ## Credits
 
 **Artist:** [KV Paint](https://www.instagram.com/kv.paint)  
-**Developer:** [Ton nom ou pseudo ici]
+**Developer:** CCDevX
 
 ---
 
