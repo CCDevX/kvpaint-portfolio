@@ -20,6 +20,15 @@
     var(--bg-primary) 100%
   );
 
+  --gallery-page-background: radial-gradient(
+    circle at center,
+    rgba(240, 248, 255, 1) 0%,
+    /* bleu très pâle (AliceBlue) */ rgba(197, 224, 240, 0.4) 30%,
+    /* bleu glacier */ rgba(211, 219, 240, 0.3) 55%,
+    /* lavande grisée */ rgba(195, 220, 250, 0.2) 70%,
+    /* bleu azur pastel */ var(--bg-primary) 100%
+  );
+
   --about-page-background: radial-gradient(
     circle at center,
     #f0f4f6 0%,

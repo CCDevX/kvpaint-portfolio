@@ -1,82 +1,132 @@
 .gallery-section {
   padding: 6rem 2rem;
   background: var(--gallery-page-background);
+  width: 100%;
+  height: 100%;
 
   .gallery-header {
-    text-align: center;
-    margin-bottom: 4rem;
-
-    h2 {
-      font-size: 3rem;
-      color: var(--text-primary);
-      margin-bottom: 2rem;
-    }
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
 
     .gallery-filters {
+      backdrop-filter: blur(8px); // verre dépoli
+      background: var(--bg-elevated);
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08);
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
+      gap: 1rem;
       flex-wrap: wrap;
+      align-items: center;
 
       .filter-btn {
-        padding: 1rem 2rem;
-        background-color: var(--bg-elevated);
-        color: var(--text-secondary);
-        border: 1px solid var(--border-color);
-        border-radius: 2rem;
-        cursor: pointer;
+        padding: 0.8rem 1.6rem;
+        background: transparent;
+        font-weight: 500;
+        border: 1px solid transparent;
         font-size: 1.4rem;
-        transition: all var(--transition-speed);
-
-        &.active {
-          background-color: var(--accent-color);
-          color: #fff;
-        }
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 0.5rem;
 
         &:hover {
           background-color: var(--accent-hover);
-          color: #fff;
+          color: white;
+          transform: translateY(-1px);
+          box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.05);
+        }
+
+        &.active {
+          background-color: var(--accent-color);
+          color: white;
+          box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
         }
       }
     }
   }
 
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 2rem;
-    padding: 0 2rem;
+  .gallery-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
 
-    .gallery-item {
-      border-radius: 0.8rem;
-      overflow: hidden;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease;
+    .gallery-grid {
+      flex: 1;
+      max-width: 700px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      justify-items: center;
+      .gallery-item {
+        width: 150px;
+        height: 150px;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease;
 
-      &:hover {
-        transform: scale(1.03);
-      }
+        &:hover {
+          transform: scale(1.05);
+        }
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
       }
     }
-  }
 
-  .gallery-preview {
-    margin-top: 4rem;
-    text-align: center;
+    .gallery-divider {
+      width: 100%;
+      height: 1px;
+      background-color: var(--border-color);
+      opacity: 0.2;
+    }
 
-    img {
-      max-width: 100%;
-      max-height: 70vh;
-      border-radius: 1rem;
-      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-      transition: opacity 0.4s ease;
+    .gallery-preview {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      flex-shrink: 0;
+      &.hidden {
+        display: none;
+      }
+      img {
+        border: 3px solid var(--border-color);
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+    }
+
+    .placeholder-message {
+      border: 1px dashed var(--border-color);
+      background: rgba(255, 255, 255, 0.3);
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      width: 400px;
+      margin: auto;
+      border-radius: 0.4rem;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+      &.inactive {
+        display: none;
+      }
     }
   }
 }
