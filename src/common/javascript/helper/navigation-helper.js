@@ -23,7 +23,8 @@ const fetchPageContent = async (pageName) => {
 
 const loadPageScripts = async (pageName, pageConfig) => {
   //const scripts = pageConfig[pageName]?.scripts || [];
-  const scripts = await import(`../../../pages/${pageName}/${pageName}.js`);
+  // const scripts = await import(`../../../pages/${pageName}/${pageName}.js`);
+  const scripts = pageConfig[pageName]?.scripts || [];
 
   if (scripts.length === 0) {
     console.log(`No scripts to load for page: ${pageName}`);
@@ -32,9 +33,10 @@ const loadPageScripts = async (pageName, pageConfig) => {
 
   return Promise.all(
     scripts.map((scriptSrc) => {
+      console.log("script", new URL(scriptSrc, import.meta.url).href);
       return new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = scriptSrc;
+        script.src = new URL(scriptSrc, import.meta.url).href;
         script.type = "module";
         script.async = true;
         script.setAttribute("data-page-script", "");
