@@ -3,6 +3,7 @@ import "./common/javascript/helper/theme-helper.js";
 import { initPage } from "./common/javascript/helper/page-init.js";
 import { pageConfig } from "./common/javascript/config/page-config.js";
 import { loadPage } from "./common/javascript/helper/navigation-helper.js";
+import logo from "./assets/img/logo.png";
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavMenu();
@@ -13,6 +14,8 @@ const menuBtn = document.querySelector("#menu-icon");
 const topNav = document.querySelector(".top-nav");
 
 const initNavMenu = () => {
+  const img = document.querySelector("#logo");
+  img.src = logo;
   const navLinks = document.querySelectorAll("nav.top-nav a");
   bindLinkEvents(navLinks);
 

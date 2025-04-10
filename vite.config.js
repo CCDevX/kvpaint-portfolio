@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
   root: "./src",
@@ -14,7 +15,21 @@ export default defineConfig({
         galleryPage: resolve(__dirname, "src/pages/gallery/gallery.html"),
         aboutPage: resolve(__dirname, "src/pages/about/about.html"),
         contactPage: resolve(__dirname, "src/pages/contact/contact.html"),
+        homeJS: resolve(__dirname, "src/pages/home/home.js"),
+        galleryJS: resolve(__dirname, "src/pages/gallery/gallery.js"),
+        aboutJS: resolve(__dirname, "src/pages/about/about.js"),
+        contactJS: resolve(__dirname, "src/pages/contact/contact.js"),
       },
     },
   },
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: "assets/**/*", // Chemin depuis ./src (car root: "./src")
+          dest: "assets",
+        },
+      ],
+    }),
+  ],
 });
