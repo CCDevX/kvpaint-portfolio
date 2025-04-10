@@ -12,7 +12,12 @@ const clearOldScripts = () => {
 };
 
 const fetchPageContent = async (pageName) => {
-  const response = await fetch(`./pages/${pageName}/${pageName}.html`);
+  const pageUrl = new URL(
+    `./pages/${pageName}/${pageName}.html`,
+    import.meta.url
+  );
+  const response = await fetch(pageUrl);
+  //const response = await fetch(`./pages/${pageName}/${pageName}.html`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! Status: ${response.status}`);
