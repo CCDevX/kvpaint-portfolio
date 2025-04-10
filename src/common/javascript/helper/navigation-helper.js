@@ -22,7 +22,8 @@ const fetchPageContent = async (pageName) => {
 };
 
 const loadPageScripts = async (pageName, pageConfig) => {
-  const scripts = pageConfig[pageName]?.scripts || [];
+  //const scripts = pageConfig[pageName]?.scripts || [];
+  const scripts = await import(`../../../pages/${pageName}/${pageName}.js`);
 
   if (scripts.length === 0) {
     console.log(`No scripts to load for page: ${pageName}`);
