@@ -9,7 +9,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"), // pour utiliser @/
     },
   },
-  // base: "/",
+  base: "./",
   build: {
     outDir: "../dist",
     emptyOutDir: true,
