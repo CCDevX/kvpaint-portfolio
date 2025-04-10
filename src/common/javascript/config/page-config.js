@@ -1,19 +1,19 @@
 const pageConfig = {
   home: {
     title: "Home",
-    scripts: ["pages/home/home.js"],
+    scripts: ["./pages/home/home.js"],
   },
   gallery: {
     title: "Galerie",
-    scripts: ["pages/gallery/gallery.js"],
+    scripts: ["./pages/gallery/gallery.js"],
   },
   about: {
     title: "A propos",
-    scripts: ["pages/about/about.js"],
+    scripts: ["./pages/about/about.js"],
   },
   contact: {
     title: "Contact",
-    scripts: ["pages/contact/contact.js"],
+    scripts: ["./pages/contact/contact.js"],
   },
 };
 
