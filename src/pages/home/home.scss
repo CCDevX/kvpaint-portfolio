@@ -1,5 +1,6 @@
 @use "@/common/scss/buttons" as *;
 @use "@/common/scss/keyframes" as *;
+@use "@/common/scss/media-queries" as *;
 
 .home {
   max-height: 100%;
@@ -21,6 +22,11 @@
         box-shadow: 0 0 2rem var(--box-shadow-color);
         &:hover {
           animation: spin 10s ease-out infinite alternate;
+        }
+
+        @include sm {
+          width: 30rem;
+          height: 30rem;
         }
       }
     }
@@ -44,6 +50,7 @@
     p {
       font-size: 1.6rem;
       color: var(--text-primary);
+      padding: 1rem;
     }
   }
 }
