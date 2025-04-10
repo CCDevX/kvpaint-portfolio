@@ -1,9 +1,9 @@
-@use "./common/scss/reset" as *;
-@use "./common/scss/base" as *;
-@use "./common/scss/media-queries" as *;
-@use "./common/scss/theme/theme-dark" as *;
-@use "./common/scss/theme/theme-light" as *;
-@use "./common/scss/theme/theme-common" as *;
+@use "@/common/scss/reset" as *;
+@use "@/common/scss/base" as *;
+@use "@/common/scss/media-queries" as *;
+@use "@/common/scss/theme/theme-dark" as *;
+@use "@/common/scss/theme/theme-light" as *;
+@use "@/common/scss/theme/theme-common" as *;
 
 .container {
   height: 100vh;

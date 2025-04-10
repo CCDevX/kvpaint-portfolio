@@ -1,9 +1,14 @@
 import { defineConfig } from "vite";
-import { resolve } from "path";
+import path, { resolve } from "path";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
   root: "./src",
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"), // pour utiliser @/
+    },
+  },
   // base: "/",
   build: {
     outDir: "../dist",
@@ -29,7 +34,21 @@ export default defineConfig({
           src: "assets/**/*", // Chemin depuis ./src (car root: "./src")
           dest: "assets",
         },
+        { src: "pages/home/home.js", dest: "pages/home" },
+        { src: "pages/gallery/gallery.js", dest: "pages/gallery" },
+        { src: "pages/about/about.js", dest: "pages/about" },
+        { src: "pages/contact/contact.js", dest: "pages/contact" },
+        { src: "common/javascript/config/*", dest: "common/javascript/config" },
+        { src: "common/javascript/helper/*", dest: "common/javascript/helper" },
+        { src: "common/scss/*", dest: "common/scss" },
       ],
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        includePaths: ["./src"], // pour que Sass comprenne @/
+      },
+    },
+  },
 });
