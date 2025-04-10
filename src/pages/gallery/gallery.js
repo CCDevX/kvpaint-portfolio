@@ -16,6 +16,19 @@ function initGallery() {
     return;
   }
 
+  window.addEventListener("resize", (event) => {
+    console.log("reisze");
+    const controller = document.querySelector(".gallery-controls");
+    if (window.innerWidth <= 767) {
+      controller.style.display = "none";
+      IMAGES_PER_PAGE = 6;
+    } else {
+      controller.style.display = "block";
+      IMAGES_PER_PAGE = 8;
+    }
+    renderGallery();
+  });
+
   fetchImages();
   setupFilterButtons();
   renderGallery();

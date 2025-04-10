@@ -1,3 +1,5 @@
+@use "@/common/scss/media-queries" as *;
+
 .gallery-section {
   padding: 6rem 2rem;
   background: var(--gallery-page-background);
@@ -62,8 +64,8 @@
       margin-top: 1rem;
       justify-items: center;
       .gallery-item {
-        width: 150px;
-        height: 150px;
+        width: 15rem;
+        height: 15rem;
         border-radius: 1rem;
         overflow: hidden;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -80,6 +82,18 @@
           object-fit: cover;
           display: block;
         }
+        @include sm {
+          width: 10rem;
+          height: 10rem;
+        }
+      }
+      @include sm {
+        gap: 1;
+        grid-template-columns: repeat(
+          3,
+          10rem
+        ); // 2 colonnes pour les petits écrans
+        grid-template-rows: repeat(3, auto);
       }
     }
 
@@ -126,6 +140,10 @@
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
       &.inactive {
         display: none;
+      }
+      @include sm {
+        height: 30rem;
+        width: 30rem;
       }
     }
   }
