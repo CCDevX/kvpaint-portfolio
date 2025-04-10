@@ -22,40 +22,50 @@ const fetchPageContent = async (pageName) => {
 };
 
 const loadPageScripts = async (pageName, pageConfig) => {
-  //const scripts = pageConfig[pageName]?.scripts || [];
-  // const scripts = await import(`../../../pages/${pageName}/${pageName}.js`);
-  const scripts = pageConfig[pageName]?.scripts || [];
-
-  if (scripts.length === 0) {
-    console.log(`No scripts to load for page: ${pageName}`);
-    return "No scripts loaded";
+  try {
+    const module = await import(`@pages/${pageName}/${pageName}.js`);
+    return module;
+  } catch (error) {
+    console.error(`Erreur de chargement de ${pageName}:`, error);
+    throw error;
   }
-
-  return Promise.all(
-    scripts.map((scriptSrc) => {
-      console.log("script", new URL(scriptSrc, import.meta.url).href);
-      const finalScript = new URL(scriptSrc, import.meta.url).href;
-      return new Promise((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src = finalScript;
-        script.type = "module";
-        script.async = true;
-        script.setAttribute("data-page-script", "");
-        document.body.appendChild(script);
-        console.log(script);
-        script.onload = () => {
-          console.log(`Script loaded: ${scriptSrc}`);
-          resolve(finalScript);
-        };
-
-        script.onerror = () => {
-          console.error(`Script failed to load: ${scriptSrc}`);
-          reject(new Error(`Failed to load script: ${finalScript}`));
-        };
-      });
-    })
-  );
 };
+
+// const loadPageScripts = async (pageName, pageConfig) => {
+//   //const scripts = pageConfig[pageName]?.scripts || [];
+//   // const scripts = await import(`../../../pages/${pageName}/${pageName}.js`);
+//   const scripts = pageConfig[pageName]?.scripts || [];
+
+//   if (scripts.length === 0) {
+//     console.log(`No scripts to load for page: ${pageName}`);
+//     return "No scripts loaded";
+//   }
+
+//   return Promise.all(
+//     scripts.map((scriptSrc) => {
+//       console.log("script", new URL(scriptSrc, import.meta.url).href);
+//       const finalScript = new URL(scriptSrc, import.meta.url).href;
+//       return new Promise((resolve, reject) => {
+//         const script = document.createElement("script");
+//         script.src = finalScript;
+//         script.type = "module";
+//         script.async = true;
+//         script.setAttribute("data-page-script", "");
+//         document.body.appendChild(script);
+//         console.log(script);
+//         script.onload = () => {
+//           console.log(`Script loaded: ${scriptSrc}`);
+//           resolve(finalScript);
+//         };
+
+//         script.onerror = () => {
+//           console.error(`Script failed to load: ${scriptSrc}`);
+//           reject(new Error(`Failed to load script: ${finalScript}`));
+//         };
+//       });
+//     })
+//   );
+// };
 
 const loadPage = async (pageName, pageConfig, onPageReady, params = {}) => {
   displayLoadingState();
