@@ -34,22 +34,23 @@ const loadPageScripts = async (pageName, pageConfig) => {
   return Promise.all(
     scripts.map((scriptSrc) => {
       console.log("script", new URL(scriptSrc, import.meta.url).href);
+      const finalScript = new URL(scriptSrc, import.meta.url).href;
       return new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = new URL(scriptSrc, import.meta.url).href;
+        script.src = finalScript;
         script.type = "module";
         script.async = true;
         script.setAttribute("data-page-script", "");
         document.body.appendChild(script);
-
+        console.log(script);
         script.onload = () => {
           console.log(`Script loaded: ${scriptSrc}`);
-          resolve(scriptSrc);
+          resolve(finalScript);
         };
 
         script.onerror = () => {
           console.error(`Script failed to load: ${scriptSrc}`);
-          reject(new Error(`Failed to load script: ${scriptSrc}`));
+          reject(new Error(`Failed to load script: ${finalScript}`));
         };
       });
     })
