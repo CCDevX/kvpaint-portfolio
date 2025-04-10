@@ -55,14 +55,14 @@ const loadPageScripts = async (pageName, pageConfig) => {
 
 const loadPage = async (pageName, pageConfig, onPageReady, params = {}) => {
   displayLoadingState();
-  clearOldScripts();
+  //clearOldScripts();
 
   try {
     const html = await fetchPageContent(pageName);
     pageContent.innerHTML = html;
 
-    await loadPageScripts(pageName, pageConfig);
-    console.log(`Page ${pageName} fully loaded.`);
+    // await loadPageScripts(pageName, pageConfig);
+    // console.log(`Page ${pageName} fully loaded.`);
 
     if (typeof onPageReady === "function") {
       onPageReady(pageName, params);
