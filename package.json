@@ -7,7 +7,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,8 @@
   },
   "homepage": "https://github.com/CCDevX/kvpaint-portfolio#readme",
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "sass": "^1.86.2",
-    "vite": "^6.2.5",
-    "vite-plugin-gh-pages": "^1.0.1"
+    "vite": "^6.2.5"
   }
 }
