@@ -24,6 +24,7 @@
   "devDependencies": {
     "gh-pages": "^6.3.0",
     "sass": "^1.86.2",
-    "vite": "^6.2.5"
+    "vite": "^6.2.5",
+    "vite-plugin-static-copy": "^2.3.1"
   }
 }
