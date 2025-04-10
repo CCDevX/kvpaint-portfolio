@@ -17,12 +17,16 @@
     background-color: var(--bg-primary);
 
     .logo {
-      font-size: 3rem;
-      font-weight: bold;
-      font-family: var(--font-family);
-      color: var(--text-secondary);
-      @include sm {
-        font-size: 2rem;
+      display: flex;
+      flex-direction: center;
+      align-items: center;
+      img {
+        width: 8rem;
+        height: 8rem;
+        @include sm {
+          width: 7rem;
+          height: 7rem;
+        }
       }
     }
 
