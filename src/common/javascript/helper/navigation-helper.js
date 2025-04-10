@@ -12,10 +12,9 @@ const clearOldScripts = () => {
 };
 
 const fetchPageContent = async (pageName) => {
-  const pageUrl = new URL(
-    `./pages/${pageName}/${pageName}.html`,
-    import.meta.url
-  );
+  const pageUrl = `${
+    import.meta.env.BASE_URL
+  }pages/${pageName}/${pageName}.html`;
   const response = await fetch(pageUrl);
   //const response = await fetch(`./pages/${pageName}/${pageName}.html`);
 
