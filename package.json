@@ -22,6 +22,7 @@
   "homepage": "https://github.com/CCDevX/kvpaint-portfolio#readme",
   "devDependencies": {
     "sass": "^1.86.2",
-    "vite": "^6.2.5"
+    "vite": "^6.2.5",
+    "vite-plugin-gh-pages": "^1.0.1"
   }
 }
