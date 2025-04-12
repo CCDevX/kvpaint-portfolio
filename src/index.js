@@ -70,7 +70,6 @@ const bindLinkEvents = (links) => {
       e.currentTarget.classList.add("active");
 
       const page = e.currentTarget.getAttribute("data-page");
-      console.log("page : ", page);
       loadPage(page, pageConfig, initPage);
     });
   });

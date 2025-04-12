@@ -33,6 +33,7 @@
 
     .hero-content {
       animation: fadeInUp 2s ease-out forwards;
+      font-family: var(--font-family-title);
       .hero-title {
         font-size: 4rem;
         color: var(--text-secondary);
@@ -46,10 +47,10 @@
     }
   }
   .intro {
-    animation: fadeInUp 2s ease-out forwards;
+    animation: fadeInUp 3s ease-out forwards;
     p {
       font-size: 1.6rem;
-      color: var(--text-primary);
+      color: var(--text-secondary);
       padding: 1rem;
     }
   }

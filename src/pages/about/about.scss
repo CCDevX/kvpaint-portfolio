@@ -27,7 +27,12 @@
       display: flex;
       flex-direction: column;
       h2 {
-        font-size: 2rem;
+        font-size: 4rem;
+        color: var(--text-secondary);
+        font-family: var(--font-family-title);
+        @include sm {
+          font-size: 2rem;
+        }
       }
       p {
         font-size: 1.6rem;
