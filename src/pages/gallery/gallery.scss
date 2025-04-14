@@ -1,7 +1,81 @@
 @use "@/common/scss/media-queries" as *;
 
+// -- Variables --
+
+// Espacement
+$gallery-padding-vertical: 6rem;
+$gallery-padding-horizontal: 2rem;
+$gallery-filter-padding-vertical: 1rem;
+$gallery-filter-padding-horizontal: 2rem;
+$gallery-grid-gap: 3rem;
+$gallery-item-margin: 0.5rem;
+$pagination-gap: 1rem;
+$gallery-controls-gap: 0.8rem;
+
+// Tailles
+$gallery-filter-border-radius: 1rem;
+$gallery-filter-button-radius: 0.5rem;
+$gallery-item-border-radius: 1rem;
+$gallery-item-width: 15rem;
+$gallery-item-height: 15rem;
+$gallery-placeholder-radius: 0.4rem;
+
+// Couleurs
+$gallery-filter-bg: var(--bg-elevated);
+$gallery-filter-text: var(--text-secondary);
+$gallery-filter-active-bg: var(--accent-color);
+$gallery-filter-active-text: #fff;
+$gallery-border-color: var(--border-color);
+$gallery-text-muted: var(--text-muted);
+
+// Ombre
+$gallery-filter-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08);
+$gallery-filter-button-hover-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.05);
+$gallery-filter-button-active-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+$gallery-item-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+$gallery-preview-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+$gallery-placeholder-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+
+// Transition
+$gallery-transition: all 0.3s ease;
+
+// Polices
+$gallery-font-size: 1.4rem; // General font size for most elements
+$gallery-font-weight: 500;
+
+// -- Mixins --
+
+@mixin gallery-section-padding {
+  padding: $gallery-padding-vertical $gallery-padding-horizontal;
+}
+
+@mixin gallery-filter-button {
+  padding: 0.8rem 1.6rem;
+  background: transparent;
+  font-weight: $gallery-font-weight;
+  border: 1px solid transparent;
+  font-size: $gallery-font-size;
+  color: $gallery-filter-text;
+  cursor: pointer;
+  transition: $gallery-transition;
+  border-radius: $gallery-filter-button-radius;
+}
+
+@mixin gallery-item-style {
+  width: $gallery-item-width;
+  height: $gallery-item-height;
+  border-radius: $gallery-item-border-radius;
+  overflow: hidden;
+  box-shadow: $gallery-item-shadow;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin: $gallery-item-margin;
+}
+
+// -- Styles --
+
 .gallery-section {
-  padding: 6rem 2rem;
+  @include gallery-section-padding; // Using mixin
   background: var(--gallery-page-background);
   width: 100%;
   max-height: 100%;
@@ -12,38 +86,31 @@
     margin-bottom: 2rem;
 
     .gallery-filters {
-      backdrop-filter: blur(8px); // verre dépoli
-      background: var(--bg-elevated);
-      padding: 1rem 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(8px);
+      background: $gallery-filter-bg;
+      padding: $gallery-filter-padding-vertical
+        $gallery-filter-padding-horizontal;
+      border-radius: $gallery-filter-border-radius;
+      box-shadow: $gallery-filter-shadow;
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
       align-items: center;
 
       .filter-btn {
-        padding: 0.8rem 1.6rem;
-        background: transparent;
-        font-weight: 500;
-        border: 1px solid transparent;
-        font-size: 1.4rem;
-        color: var(--text-secondary);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border-radius: 0.5rem;
+        @include gallery-filter-button; // Using mixin
 
         &:hover {
           background-color: var(--accent-hover);
           color: white;
           transform: translateY(-1px);
-          box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.05);
+          box-shadow: $gallery-filter-button-hover-shadow;
         }
 
         &.active {
           background-color: var(--accent-color);
           color: white;
-          box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+          box-shadow: $gallery-filter-button-active-shadow;
         }
       }
     }
@@ -59,19 +126,17 @@
       flex: 1;
       max-width: 70rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 3rem;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(120px, 1fr)
+      ); // Responsive grid
+      gap: $gallery-grid-gap;
       margin-top: 1rem;
       justify-items: center;
+
       .gallery-item {
-        width: 15rem;
-        height: 15rem;
-        border-radius: 1rem;
-        overflow: hidden;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        margin: 0.5rem;
+        @include gallery-item-style; // Using mixin
+
         &:hover {
           transform: scale(1.05);
         }
@@ -82,17 +147,16 @@
           object-fit: cover;
           display: block;
         }
+
         @include sm {
           width: 10rem;
           height: 10rem;
         }
       }
+
       @include sm {
-        gap: 1;
-        grid-template-columns: repeat(
-          3,
-          10rem
-        ); // 2 colonnes pour les petits écrans
+        gap: 1rem; // Adjust gap on small screens
+        grid-template-columns: repeat(3, 10rem); // 3 columns on small screens
         grid-template-rows: repeat(3, auto);
       }
     }
@@ -100,7 +164,7 @@
     .gallery-divider {
       width: 100%;
       height: 1px;
-      background-color: var(--border-color);
+      background-color: $gallery-border-color;
       opacity: 0.2;
     }
 
@@ -109,24 +173,26 @@
       justify-content: center;
       margin-top: 1rem;
       flex-shrink: 0;
+
       &.hidden {
         display: none;
       }
+
       img {
-        border: 3px solid var(--border-color);
+        border: 3px solid $gallery-border-color;
         max-width: 30rem;
         width: 100%;
         height: auto;
         border-radius: 1rem;
-        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+        box-shadow: $gallery-preview-shadow;
         transition: transform 0.3s ease;
       }
     }
 
     .placeholder-message {
-      border: 1px dashed var(--border-color);
+      border: 1px dashed $gallery-border-color;
       background: rgba(255, 255, 255, 0.3);
-      color: var(--text-muted);
+      color: $gallery-text-muted;
       font-style: italic;
       font-size: 1.2rem;
       display: flex;
@@ -135,12 +201,14 @@
       height: 300px;
       width: 400px;
       margin: auto;
-      border-radius: 0.4rem;
+      border-radius: $gallery-placeholder-radius;
       backdrop-filter: blur(4px);
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+      box-shadow: $gallery-placeholder-shadow;
+
       &.inactive {
         display: none;
       }
+
       @include sm {
         height: 30rem;
         width: 30rem;
@@ -161,13 +229,13 @@
   .pagination {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    font-size: 1.4rem;
+    gap: $pagination-gap;
+    font-size: $gallery-font-size;
     color: var(--text-secondary);
 
     button {
       padding: 0.5rem 1.2rem;
-      border: 1px solid var(--border-color);
+      border: 1px solid $gallery-border-color;
       background-color: var(--bg-elevated);
       color: var(--text-primary);
       border-radius: 0.5rem;
@@ -188,21 +256,21 @@
   .gallery-controls {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    font-size: 1.4rem;
+    gap: $gallery-controls-gap;
+    font-size: $gallery-font-size;
     color: var(--text-secondary);
 
     label {
-      font-weight: 500;
+      font-weight: $gallery-font-weight;
     }
 
     select {
       padding: 0.4rem 1rem;
-      border: 1px solid var(--border-color);
+      border: 1px solid $gallery-border-color;
       border-radius: 0.5rem;
       background-color: var(--bg-primary);
       color: var(--text-primary);
-      font-size: 1.4rem;
+      font-size: $gallery-font-size;
       cursor: pointer;
       transition: background-color 0.3s ease;
 

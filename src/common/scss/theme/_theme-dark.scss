@@ -1,43 +1,40 @@
 [data-theme="dark"] {
-  --bg-primary: #3f464c; // gris doux avec une pointe de bleu
-  --bg-secondary: #50585f; // légèrement plus clair pour les blocs
-  --bg-elevated: #616b74; // pour cartes ou modals
-  --text-primary: #f0f2f4; // blanc cassé
-  --text-secondary: #737d87; // gris clair lisible
-  --accent-color: #4db0c8; // bleu pastel (cohérent avec le halo)
-  --accent-hover: #69c3dc;
+  --bg-primary: #2a2e35; /* Gris plus profond, plus neutre */
+  --bg-secondary: #3b424e;
+  --bg-elevated: #4c525f;
 
-  --border-color: #5e6870; // discret mais visible
+  --text-primary: #dcdde1; /* Gris très clair, meilleure lisibilité */
+  --text-secondary: #9aa0a6; /* Gris clair, neutre */
 
-  --home-page-background: radial-gradient(
-    circle at center,
-    #d8eef2 0%,
-    #9cc4d8 40%,
-    var(--bg-primary) 100%
+  --accent-color: #55a6d3; /* Bleu plus doux */
+  --accent-hover: #7db1d9;
+
+  --border-color: #5d6673;
+
+  --home-page-background: linear-gradient(
+    /* Gradient linéaire */ 45deg,
+    #3b4859,
+    /* Bleu-gris sombre */ #323743 /* Gris profond */
   );
 
   --gallery-page-background: radial-gradient(
-    circle at center,
-    rgba(197, 224, 240, 0.05) 0%,
-    /* bleu glacier très discret */ rgba(160, 180, 210, 0.06) 30%,
-    /* gris-bleu doux */ rgba(150, 170, 200, 0.05) 55%,
-    /* lavande froide */ rgba(120, 145, 180, 0.04) 70%,
-    /* bleu-gris profond */ var(--bg-primary) 100%
+    /* Gradient radial plus doux */ circle,
+    rgba(40, 43, 48, 0.7) 0%,
+    /* Noir très transparent */ rgba(54, 58, 66, 0.3) 15%,
+    /* Gris plus doux */ rgba(67, 73, 83, 0.15) 30%,
+    /* gris doux */ #2a2e35 80% /* Bleu */
   );
 
-  --about-page-background: radial-gradient(
-    circle at center,
-    rgba(229, 231, 88, 0.1) 0%,
-    rgba(107, 96, 157, 0.3) 40%,
-    rgba(62, 57, 104, 0.5) 70%,
-    var(--bg-primary) 100%
+  --about-page-background: linear-gradient(
+    135deg,
+    rgba(51, 47, 56, 0.4) 0%,
+    /* Violet */ rgba(43, 38, 48, 0.2) 50%,
+    /* Gris foncé */ #2a2e35 100% /* Noir */
   );
 
   --contact-page-background: linear-gradient(
     135deg,
-    #9b5c6b 0%,
-    /* rosé prune doux */ #b97b5a 35%,
-    /* orange pêche cuivrée claire */ #688aa0 70%,
-    /* bleu-gris lumineux mais sourd */ var(--bg-primary) 100%
+    #4a545e,
+    /* gris chaud*/ #2a2e35 /* Noir */
   );
 }

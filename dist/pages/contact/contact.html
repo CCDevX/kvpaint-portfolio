@@ -6,12 +6,30 @@
       formulaire ci-dessous.
     </p>
     <form action="https://formspree.io/f/myzeldgd" method="POST">
-      <input type="text" name="name" placeholder="Nom" required />
-      <input type="email" name="email" placeholder="Email" required />
+      <label for="name">Nom</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Votre nom"
+        required
+      />
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Votre email"
+        required
+      />
+
+      <label for="message">Message</label>
       <textarea
+        id="message"
         name="message"
         rows="5"
-        placeholder="Message"
+        placeholder="Votre message"
         required
       ></textarea>
       <button type="submit" class="btn btn-explore">Envoyer</button>
@@ -19,6 +37,9 @@
   </div>
 
   <div class="contact-image">
-    <img src="/assets/kv-art-contact-Dgt1AxJP.png" alt="Artwork illustration" />
+    <img
+      src="/assets/kv-art-contact-Dgt1AxJP.png"
+      alt="Illustration artistique de contact"
+    />
   </div>
 </section>

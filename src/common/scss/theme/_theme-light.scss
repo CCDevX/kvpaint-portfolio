@@ -1,47 +1,39 @@
 [data-theme="light"] {
-  --bg-primary: #f6f9fa;
-  --bg-secondary: #e4eef1;
-  --bg-elevated: #d4e4e7;
+  --bg-primary: #f0f0f2;
+  --bg-secondary: #e2e2e5;
+  --bg-elevated: #d4d4d8;
 
-  --text-primary: #333333;
-  --text-secondary: #66727a;
+  --text-primary: #3d424b; /* Gris foncé, mais doux */
+  --text-secondary: #6e7781;
 
-  --accent-color: #3c8ca4;
-  --accent-hover: #58a9c0;
+  --accent-color: #5f9ea0; /* Bleu verdâtre clair */
+  --accent-hover: #7bb5b7;
 
-  --border-color: #3e4a52;
+  --border-color: #b0bec5;
 
-  --box-shadow-color: rgba(0, 0, 0, 0.4);
-
-  --home-page-background: radial-gradient(
-    circle at center,
-    #d8eef2 0%,
-    #9cc4d8 40%,
-    var(--bg-primary) 100%
+  --home-page-background: linear-gradient(
+    45deg,
+    #f2f2f4,
+    /* Bleu pâle */ #f0f0f2 /* Blanc cassé */
   );
 
   --gallery-page-background: radial-gradient(
-    circle at center,
-    rgba(240, 248, 255, 1) 0%,
-    /* bleu très pâle (AliceBlue) */ rgba(197, 224, 240, 0.4) 30%,
-    /* bleu glacier */ rgba(211, 219, 240, 0.3) 55%,
-    /* lavande grisée */ rgba(195, 220, 250, 0.2) 70%,
-    /* bleu azur pastel */ var(--bg-primary) 100%
+    circle,
+    #f5f5f7,
+    /* Blanc cassé */ #e7e7e9,
+    /* Gris très doux */ rgba(230, 230, 230, 0.6),
+    /* gris */ #f0f0f2 /* Gris clair */
   );
 
-  --about-page-background: radial-gradient(
-    circle at center,
-    #f0f4f6 0%,
-    #e7d9a3 40%,
-    #d3cce9 70%,
-    var(--bg-primary) 100%
+  --about-page-background: linear-gradient(
+    135deg,
+    #f3f4f5,
+    /* gris chaud*/ #f0f0f2 /* Blanc cassé */
   );
 
   --contact-page-background: linear-gradient(
     135deg,
-    #ffe1e7 0%,
-    /* rosé pastel */ #ffd6ae 35%,
-    /* orange abricoté */ #b2d4f2 70%,
-    /* bleu ciel doux */ var(--bg-primary) 100%
+    #f5f0f3,
+    /* gris froid*/ #f0f0f2 /* Blanc cassé */
   );
 }

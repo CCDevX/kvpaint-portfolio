@@ -1,94 +1,112 @@
 import "./gallery.scss";
 
-let images_per_page = 0;
+// Configuration
+const DEFAULT_IMAGES_PER_PAGE = 16;
+const MOBILE_IMAGES_PER_PAGE = 9;
+const MOBILE_BREAKPOINT = 767;
+
+// Éléments DOM
+let galleryContainer = null;
+let paginationContainer = null;
+let itemsPerPageSelect = null;
+let filterButtons = []; // Use an array for filter buttons
+
+// État
 let currentPage = 1;
 let currentFilter = "all";
+let imagesPerPage =
+  window.innerWidth <= MOBILE_BREAKPOINT
+    ? MOBILE_IMAGES_PER_PAGE
+    : DEFAULT_IMAGES_PER_PAGE;
 let allImages = [];
-let pagination = null;
-let container = null;
 
-// Déclarez handleFilterClick AVANT de l'utiliser
-function handleFilterClick() {
-  document.querySelectorAll(".filter-btn").forEach((b) => {
-    b.classList.remove("active");
-  });
-  this.classList.add("active");
-  currentFilter = this.dataset.filter;
-  currentPage = 1;
-  renderGallery();
-}
+// Fonctions utilitaires
+const getImageUrl = (src) => `/assets/img/${src}`;
 
-function cleanupGallery() {
-  document.querySelectorAll(".filter-btn").forEach((btn) => {
-    btn.removeEventListener("click", handleFilterClick);
-  });
-}
+const clearActiveFilters = () => {
+  filterButtons.forEach((btn) => btn.classList.remove("active"));
+};
 
-function setupFilterButtons() {
-  document.querySelectorAll(".filter-btn").forEach((btn) => {
-    btn.addEventListener("click", handleFilterClick);
-  });
-}
+const setActiveFilter = (button) => {
+  clearActiveFilters();
+  button.classList.add("active");
+};
 
-function initGallery() {
-  console.log("Init gallery script");
-  currentPage = 1;
-  currentFilter = "all";
-  images_per_page = 16;
-  allImages = [];
+const filterImages = () => {
+  return currentFilter === "all"
+    ? allImages
+    : allImages.filter((img) => img.category === currentFilter);
+};
 
-  pagination = document.getElementById("pagination");
-  container = document.querySelector(".gallery-grid");
+const getPaginatedImages = (images) => {
+  const start = (currentPage - 1) * imagesPerPage;
+  return images.slice(start, start + imagesPerPage);
+};
 
-  if (!container) {
-    console.warn("Gallery container not found, retrying...");
-    return;
+const createImageElement = (img, index) => {
+  const imageUrl = getImageUrl(img.src);
+  return `
+    <div class="gallery-item ${img.category}" data-index="${index}">
+      <img src="${imageUrl}" alt="Artwork" loading="lazy" onerror="this.onerror=null; this.src='/assets/img/placeholder.png';" /> 
+    </div>
+  `;
+};
+
+const renderGalleryItems = (images) => {
+  if (!galleryContainer) {
+    console.error("Gallery container is not available.");
+    return; // Exit if container is not ready
   }
 
-  window.addEventListener("resize", (event) => {
-    console.log("reisze");
-    const controller = document.querySelector(".gallery-controls");
-    if (window.innerWidth <= 767) {
-      controller.style.display = "none";
-      images_per_page = 9;
-      itemsPerPageSelect.value = "9";
-    } else {
-      controller.style.display = "block";
-      images_per_page = 16;
-      itemsPerPageSelect.value = "16";
+  galleryContainer.innerHTML = images
+    .map((img, index) => createImageElement(img, index))
+    .join("");
+
+  // Event listeners for image click
+  galleryContainer.querySelectorAll("img").forEach((img) => {
+    img.addEventListener("click", () => {
+      const index = parseInt(img.closest(".gallery-item").dataset.index, 10);
+      openImagePreview(index, images);
+    });
+  });
+};
+
+const updatePaginationDisplay = (totalImages) => {
+  if (!paginationContainer) {
+    console.error("Pagination container is not available.");
+    return; // Exit if container is not ready
+  }
+
+  const totalPages = Math.ceil(totalImages / imagesPerPage);
+  const pageIndicator = document.getElementById("page-indicator");
+  pageIndicator.textContent = `Page ${currentPage} sur ${totalPages}`;
+
+  const prevPageButton = document.getElementById("prev-page");
+  const nextPageButton = document.getElementById("next-page");
+
+  prevPageButton.disabled = currentPage === 1;
+  nextPageButton.disabled = currentPage === totalPages;
+
+  prevPageButton.onclick = () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderGallery();
     }
-    currentPage = 1;
-    renderGallery();
-  });
+  };
 
-  fetchImages();
-  cleanupGallery(); // Nettoyage avant initialisation
-  setupFilterButtons();
-  renderGallery();
-}
+  nextPageButton.onclick = () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderGallery();
+    }
+  };
+};
 
-function fetchImages() {
-  const roundImages = Array.from({ length: 14 }, (_, i) => ({
-    src: `gallery/round/round${i}.jpg`, // Chemin relatif depuis le dossier public/
-    category: "round",
-  }));
-
-  const canvasImages = Array.from({ length: 8 }, (_, i) => ({
-    src: `gallery/canvas/canvas${i}.jpg`,
-    category: "canvas",
-  }));
-
-  allImages = [...roundImages, ...canvasImages];
-}
-
-function openImagePreview(index, images) {
+const openImagePreview = (index, images) => {
   if (index < 0 || index >= images.length) {
-    console.error("Index invalide :", index);
+    console.error("Invalid index:", index);
     return;
   }
-
-  console.log("images ", images);
-  console.log("index ", index);
 
   const previewContainer = document.createElement("div");
   previewContainer.className = "image-preview";
@@ -99,7 +117,7 @@ function openImagePreview(index, images) {
   closeBtn.onclick = () => previewContainer.remove();
 
   const previewImage = document.createElement("img");
-  previewImage.src = `/assets/img/${images[index].src}`; // ✅ Index validé
+  previewImage.src = getImageUrl(images[index].src);
 
   previewContainer.appendChild(closeBtn);
   previewContainer.appendChild(previewImage);
@@ -108,75 +126,73 @@ function openImagePreview(index, images) {
   previewContainer.addEventListener("click", (e) => {
     if (e.target === previewContainer) previewContainer.remove();
   });
-}
+};
 
-function renderGallery() {
-  cleanupGallery(); // Nettoie les anciens écouteurs
+const renderGallery = () => {
+  const filteredImages = filterImages();
+  const paginatedImages = getPaginatedImages(filteredImages);
 
-  const filtered =
-    currentFilter === "all"
-      ? allImages
-      : allImages.filter((img) => img.category === currentFilter);
+  renderGalleryItems(paginatedImages);
+  updatePaginationDisplay(filteredImages.length);
+};
 
-  const start = (currentPage - 1) * images_per_page;
-  const imagesToShow = filtered.slice(start, start + images_per_page);
+const fetchImages = () => {
+  const roundImages = Array.from({ length: 14 }, (_, i) => ({
+    src: `gallery/round/round${i}.jpg`,
+    category: "round",
+  }));
 
-  container.innerHTML = imagesToShow
-    .map((img, index) => {
-      // Ajoutez le paramètre 'index' ici
-      const globalIndex = start + index; // Index global dans filtered
-      const imageUrl = `/assets/img/${img.src}`;
-      return `
-      <div class="gallery-item ${img.category}" data-index="${globalIndex}">
-        <img src="${imageUrl}" alt="Artwork" />
-      </div>
-    `;
+  const canvasImages = Array.from({ length: 8 }, (_, i) => ({
+    src: `gallery/canvas/canvas${i}.jpg`,
+    category: "canvas",
+  }));
+
+  allImages = [...roundImages, ...canvasImages];
+
+  console.log("all images", allImages);
+};
+
+const initGallery = () => {
+  // Initialize DOM elements early
+  galleryContainer = document.querySelector(".gallery-grid");
+  paginationContainer = document.getElementById("pagination");
+  itemsPerPageSelect = document.getElementById("itemsPerPage");
+  filterButtons = document.querySelectorAll(".filter-btn"); // Store filter buttons
+
+  if (!galleryContainer) {
+    console.warn("Gallery container not found, retrying...");
+    return; // Early return if container is not found
+  }
+
+  fetchImages();
+  renderGallery(); // Initial render
+
+  // Event listeners
+  filterButtons.forEach((btn) =>
+    btn.addEventListener("click", function () {
+      setActiveFilter(this);
+      currentFilter = this.dataset.filter;
+      currentPage = 1;
+      renderGallery();
     })
-    .join("");
+  );
 
-  // Ajout des gestionnaires d'événements
-  document.querySelectorAll(".gallery-item img").forEach((img) => {
-    img.addEventListener("click", () => {
-      const index = parseInt(img.closest(".gallery-item").dataset.index);
-      console.log("query index", index);
-      openImagePreview(index, filtered);
+  if (itemsPerPageSelect) {
+    itemsPerPageSelect.addEventListener("change", (e) => {
+      imagesPerPage = parseInt(e.target.value, 10);
+      currentPage = 1;
+      renderGallery();
     });
-  });
+  }
 
-  renderPagination(filtered.length);
-  setupFilterButtons(); // Réattache les écouteurs
-}
-
-function renderPagination(total) {
-  const totalPages = Math.ceil(total / images_per_page);
-  const indicator = document.getElementById("page-indicator");
-  indicator.textContent = `Page ${currentPage} sur ${totalPages}`;
-
-  document.getElementById("prev-page").disabled = currentPage === 1;
-  document.getElementById("next-page").disabled = currentPage === totalPages;
-
-  document.getElementById("prev-page").onclick = () => {
-    if (currentPage > 1) {
-      currentPage--;
-      renderGallery();
-    }
-  };
-
-  document.getElementById("next-page").onclick = () => {
-    if (currentPage < totalPages) {
-      currentPage++;
-      renderGallery();
-    }
-  };
-}
-
-const itemsPerPageSelect = document.getElementById("itemsPerPage");
-if (itemsPerPageSelect) {
-  itemsPerPageSelect.addEventListener("change", (e) => {
-    images_per_page = parseInt(e.target.value, 10);
+  window.addEventListener("resize", () => {
+    imagesPerPage =
+      window.innerWidth <= MOBILE_BREAKPOINT
+        ? MOBILE_IMAGES_PER_PAGE
+        : DEFAULT_IMAGES_PER_PAGE;
     currentPage = 1;
     renderGallery();
   });
-}
+};
 
-initGallery();
+export { initGallery };
